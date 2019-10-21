@@ -1,28 +1,32 @@
 {
   "name": "client",
-  "author": "Manuel Guzman",
   "version": "0.1.0",
   "private": true,
+  "author": "Manuel Guzman",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Devrax/YOM.git"
-  },
-  "homepage": "https://github.com/Devrax/YOM#readme",
   "dependencies": {
     "core-js": "^3.1.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
+    "vuetify": "^2.1.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
     "node-sass": "^4.12.0",
+    "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-cli-plugin-vuetify": "^1.1.1",
+    "vue-template-compiler": "^2.6.10",
+    "vuetify-loader": "^1.3.0"
+  },
+  "homepage": "https://github.com/Devrax/YOM#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devrax/YOM.git"
   }
 }
