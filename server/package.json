@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "The server connects the client with the database",
+  "main": "index.js",
+  "scripts": {
+    "test": "node srx/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devrax/YOM.git"
+  },
+  "keywords": [
+    "expres",
+    "mongoose",
+    "morgan",
+    "cors"
+  ],
+  "author": "Rafael Alexander",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Devrax/YOM/issues"
+  },
+  "homepage": "https://github.com/Devrax/YOM#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.6",
+    "morgan": "^1.9.1"
+  }
+}
