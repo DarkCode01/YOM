@@ -1,11 +1,17 @@
 {
   "name": "client",
+  "author": "Manuel Guzman",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devrax/YOM.git"
+  },
+  "homepage": "https://github.com/Devrax/YOM#readme",
   "dependencies": {
     "core-js": "^3.1.2",
     "vue": "^2.6.10",
