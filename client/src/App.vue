@@ -4,7 +4,7 @@
     </v-app-bar>
 
     <v-content>
-      
+      <h1>Hello</h1>
     </v-content>
   </v-app>
 </template>
