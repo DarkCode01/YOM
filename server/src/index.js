@@ -5,7 +5,8 @@ const express = require('express'),
     port = 1234,
     app = express();
 
-app.use(cors()) //middleware para evitar errores de cors en produccion
+app //Referencia al objeto express, solo instanciar a partir de aqui las demas funciones en cadena.
+    .use(cors()) //middleware para evitar errores de cors en produccion
 
     .use(morgan('dev')) //middleware para seguir el rastro de las peticiones HTTP por consola
 
