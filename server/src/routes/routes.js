@@ -1,5 +1,4 @@
-const { Router } = require('express'),
-    router = Router();
+const router = require('express').Router();
 
 router.get('/welcome', (req, res) => {
     res.send("Hello!");
