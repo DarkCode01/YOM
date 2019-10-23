@@ -2,7 +2,7 @@ const express = require('express'),
     morgan = require('morgan'),
     cors = require('cors'),
     router = require('./routes/routes'),
-    port = 1234,
+    port = process.env.PORT || 1234,
     app = express();
 
 app //Referencia al objeto express, solo instanciar a partir de aqui las demas funciones en cadena.
@@ -12,6 +12,10 @@ app //Referencia al objeto express, solo instanciar a partir de aqui las demas f
 
     .use('/', router) //Creacion de las rutas externas
 
-    .listen(port, () => {
+    .listen(port, (err) => {
+        if (err) {
+            throw err
+        }
+        
         console.log('Running on port:', port);
     });
