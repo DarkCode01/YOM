@@ -1,0 +1,36 @@
+YOM database:
+  -user table:
+    -id:
+       -autoincrement
+       -not null
+    -username:
+      -string
+      -not null
+    -password
+      -alphanumeric
+  -product table:
+    -id_product:
+      -autoincrement
+      -not null
+     -title:
+      -string
+      -not null
+     -descr:
+      -string
+      -not null
+     -price:
+      -string
+      -not null
+     -category:
+      -string
+      -not null       
+      -user table:
+        -id_image:
+           -autoincrement
+           -not null
+        -id_product:
+          -integer
+          -relation to product table
+          -not null
+        -image_src
+          -string
