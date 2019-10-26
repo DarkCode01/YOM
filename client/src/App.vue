@@ -16,6 +16,14 @@
       ></v-text-field>
       <v-spacer></v-spacer>
       <span class="title ml-3 mr-5">YOM</span>
+      <div class="my-2">
+        <router-link to="/">
+          <v-btn small text>Sign in</v-btn>
+        </router-link>
+        <router-link to="/login">
+          <v-btn small text>Log in</v-btn>
+        </router-link>
+      </div>
     </v-app-bar>
 
     <v-navigation-drawer
@@ -30,7 +38,8 @@
       >
         <template>
           <div>
-            <h1>Hola</h1>
+            <router-link to="/">Go to Home</router-link>
+            <router-link to="/about">Go to About</router-link>
           </div>
         </template>
       </v-list>
@@ -41,41 +50,7 @@
         fluid
         class="grey lighten-4 fill-height"
       >
-        <v-row
-          justify="center"
-          align="center"
-        >
-          <v-col class="shrink">
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  large
-                  href="https://codepen.io/johnjleider/pen/zgxbYO"
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-codepen</v-icon>
-                </v-btn>
-              </template>
-              <span>Codepen</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
+        <router-view></router-view>
       </v-container>
     </v-content>
   </v-app>
@@ -88,7 +63,7 @@
       source: String,
     },
     data: () => ({
-      drawer: false
+      drawer: null
     }),
   }
 </script>
