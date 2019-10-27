@@ -5,6 +5,8 @@ const express = require('express'),
     port = process.env.PORT || 1234,
     app = express();
 
+require('./db');
+
 app //Referencia al objeto express, solo instanciar a partir de aqui las demas funciones en cadena.
     .use(cors()) //middleware para evitar errores de cors en produccion
 
