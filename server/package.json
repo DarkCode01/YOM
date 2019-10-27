@@ -4,7 +4,7 @@
   "description": "The server connects the client with the database",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.7.6",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }
