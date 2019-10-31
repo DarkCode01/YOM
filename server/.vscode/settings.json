@@ -1,0 +1,5 @@
+{
+    "powermode.enabled": true,
+    "powermode.explosionSize": 10,
+    "powermode.enableShake": false
+}

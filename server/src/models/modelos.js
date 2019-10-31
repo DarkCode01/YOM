@@ -4,10 +4,10 @@ articuloSchema = new Schema({
     idArt: String, // identificador del articulo
     nomArt: String, // nombre de articulo
     descripcion: String,
-    imgURL: String,
+   // imgURL: String,
     precio: Number, 
     ctg: String, // Categoria
-})
+},{versionKey:false})
 
 usuarioSchema = new Schema({
     idUsr: String, // Identificador de usuario
