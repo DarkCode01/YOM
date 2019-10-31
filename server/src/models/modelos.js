@@ -8,7 +8,7 @@ articuloSchema = new Schema({
     precio: Number, 
     fecSub: String, // Deberia explicar porque la fecha de subida?
     lugVen: String, // lugar de venta en donde se encuentra el articulo
-    cnd: String, // Condicion del articulo
+    cnd: String, // Condicio    n del articulo
     ctg: String, // Categoria
     scn: String, // Seccion
 }),
