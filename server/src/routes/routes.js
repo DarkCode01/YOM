@@ -3,7 +3,10 @@ const { Router } = require('express'),
     router = Router(),
     upload=require('../storage'),
     roi=require('../roi'),
-    { usuario, articulo } = require('../models/modelos');
+    {  articulo } = require('../models/modelos'),
+    shell=require('shelljs');
+
+    //Vista general
 router.get('/', (req,res)=>{
     articulo.find({},(err,articulos)=>{
         res.json(articulos);
@@ -11,10 +14,11 @@ router.get('/', (req,res)=>{
     })    
 })
 
+//Modificar producto
 router.post('/producto/:id',upload.any(),(req,res)=>{
     const { nomArt, descripcion, precio, ctg } = req.body;
     const{id}=req.params;
-    var old_images = [], new_images=[], for_update=[], resize=[];
+    var new_images=[], resize=[];
     var update={};
     req.files.forEach((file) => {
         new_images.push(file.path);
@@ -24,33 +28,29 @@ router.post('/producto/:id',upload.any(),(req,res)=>{
     if(Object.keys(req.body).length === 0){
         res.json('invalid data');
     }else{
-        articulo.findOne({_id:id},'images',(err,art)=>{
-            old_images=[...art.images]
-            new_images.forEach((image,index)=>{
-                for_update[index]=image;
+        articulo.findOne({_id:id},'images',(err,articulos)=>{
+            articulos.images.forEach((image)=>{
+                    let src = path.join(path.join(Root,'../',image));
+                    shell.rm('-rf', src);
             })
-            for(let i=for_update.length;i<5;i++){
-                for_update[i]=old_images[i];
-            }
-            console.log(for_update)
+        })
             update = {
                     nomArt:     nomArt,
                     descripcion:   descripcion,
                     precio:   precio, 
-                    images:for_update,
+                    images:new_images,
                     ctg:   ctg, 
                     }
             articulo.findOneAndUpdate({_id:id}, {$set: update}, (err, art)=>{
                    if (err) return res.send(500, { error: err });
                    return res.json(art);
-               });
-        }) 
+            });
+        }
                     
     
-   
-}
-})
 
+})
+//Crear producto
 router.post('/producto',upload.any(),(req,res)=>{
     const { nomArt, descripcion, precio, ctg } = req.body;
     console.log(req.body)
@@ -78,5 +78,28 @@ router.post('/producto',upload.any(),(req,res)=>{
     res.json(art).status(200);
 }})
 
+//Vista individual
+router.get('/producto/:id',(req,res)=>{
+    const {id}=req.params
+    articulo.find({_id:id},(err,articulos)=>{
+        res.json(articulos);
+        
+    })
+})
 
+//eliminar producto
+router.delete('/producto/:id',(req,res)=>{
+    
+     const { id } = req.params;
+     articulo.findOne({_id:id},'images',(err,articulos)=>{
+        articulos.images.forEach((image)=>{
+                let src = path.join(path.join(Root,'../',image));
+                shell.rm('-rf', src);
+        })
+    })
+        articulo.deleteOne({_id:id},(err,resu)=>{
+            if (err) throw err;
+            res.json(resu);
+        })
+ });  
 module.exports = router;
