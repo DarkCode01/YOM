@@ -44,6 +44,11 @@
         dense
         class="blue darken-4"
       >
+      <v-list-item>
+            <div class="headline font-weight-black text-center hidden-md-and-up">
+                <h1>You own Market</h1>
+            </div>
+        </v-list-item>
         <v-list-item>
             <v-list-item-title>
                 <router-link to="/">
