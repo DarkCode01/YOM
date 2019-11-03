@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="300">
+  <v-card class="mx-auto" max-width="300" @click="tapped()">
     <v-img height="150px" :src="product.imgURL"></v-img>
 
     <v-card-title class="text-uppercase">{{product.nomArt}}</v-card-title>
@@ -19,11 +19,6 @@
       <p class="pt-3 product-price font-weight-bold">{{product.precio | prefixMoney}}</p>
     </v-card-text>
 
-    <v-card-actions>
-      <v-btn color="blue" dark block>
-        <router-link class="white--text product-link" to="/">more about the product</router-link>
-      </v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
@@ -49,6 +44,11 @@ export default {
       default() {
         return { ...Product };
       }
+    }
+  },
+  methods: {
+    tapped() {
+      console.log("Hola")
     }
   },
   computed: {

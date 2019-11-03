@@ -10,7 +10,7 @@
       <v-spacer></v-spacer>
       <v-text-field
         solo-inverted
-        flat
+        text
         hide-details
         label="Search"
         prepend-inner-icon="search"
@@ -18,7 +18,7 @@
       <v-spacer></v-spacer>
       <div>
         <router-link to="/">
-          <v-btn flat text>
+          <v-btn text>
             <span class="title ml-3 mr-5">YOM</span>
           </v-btn>
         </router-link>
@@ -52,16 +52,9 @@
         <v-list-item>
             <v-list-item-title>
                 <router-link to="/">
-                    <v-btn large text flat x-large>
+                    <v-btn large text x-large>
                         <span>Home</span>
                         <v-icon class="float-right">mdi-home-circle</v-icon></v-btn>
-                </router-link>
-            </v-list-item-title>
-        </v-list-item>
-        <v-list-item>
-            <v-list-item-title>
-                <router-link to="/About">
-                    <v-btn large text flat x-large>About</v-btn>
                 </router-link>
             </v-list-item-title>
         </v-list-item>

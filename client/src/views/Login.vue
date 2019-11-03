@@ -3,7 +3,7 @@
    <v-toolbar
     color="blue darken-4"
     dark
-    flat
+    text
     >
     <v-toolbar-title>Login form</v-toolbar-title>
     <v-spacer></v-spacer>
