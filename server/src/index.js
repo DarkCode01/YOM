@@ -4,7 +4,10 @@ const express = require('express'),
     router = require('./routes/routes'),
     bodyParser= require('body-parser'),
     port = process.env.PORT || 1234,
-    app = express();
+    shell=require('shelljs'),
+    app = express(),
+     path = require('path');
+global.Root = path.resolve(__dirname);
 
 require('./db');
 
@@ -26,3 +29,8 @@ app //Referencia al objeto express, solo instanciar a partir de aqui las demas f
         
         console.log('Running on port:', port);
     });
+
+let dir = './storage/images';
+shell.mkdir('-p', dir);
+//creando la ruta y el directorio para almacenar las imagenes
+

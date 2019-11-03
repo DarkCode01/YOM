@@ -4,7 +4,7 @@ articuloSchema = new Schema({
     idArt: String, // identificador del articulo
     nomArt: String, // nombre de articulo
     descripcion: String,
-   // imgURL: String,
+    images:[String],
     precio: Number, 
     ctg: String, // Categoria
 },{versionKey:false})
