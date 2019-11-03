@@ -3,7 +3,8 @@
         <v-app-bar
       app
       clipped-left
-      color="red darken-4"
+      dark
+      color="blue darken-4"
     >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
@@ -36,22 +37,36 @@
       v-model="drawer"
       app
       clipped
-      color="grey lighten-4"
+      dark
+      color="blue darken-4"
     >
       <v-list
         dense
-        class="grey lighten-4"
+        class="blue darken-4"
       >
-          <div>
-            <router-link to="/">Go to Home</router-link>
-            <router-link to="/about">Go to About</router-link>
-          </div>
+        <v-list-item>
+            <v-list-item-title>
+                <router-link to="/">
+                    <v-btn large text flat x-large>
+                        <span>Home</span>
+                        <v-icon class="float-right">mdi-home-circle</v-icon></v-btn>
+                </router-link>
+            </v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+            <v-list-item-title>
+                <router-link to="/About">
+                    <v-btn large text flat x-large>About</v-btn>
+                </router-link>
+            </v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     </nav>
 </template>
 
-<script>
+<script> 
+
     export default {
     name: "navbar",
     props: {
