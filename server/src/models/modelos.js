@@ -1,16 +1,13 @@
 const { Schema, model } = require('mongoose'),
 
-    articuloSchema = new Schema({
-        nomArt: String, // nombre de articulo
-        descripcion: String,
-        imgURL: String,
-        precio: Number,
-        fecSub: String, // Deberia explicar porque la fecha de subida?
-        lugVen: String, // lugar de venta en donde se encuentra el articulo
-        cnd: String, // Condicion del articulo
-        ctg: String, // Categoria
-        scn: String, // Seccion
-    }),
+articuloSchema = new Schema({
+    idArt: String, // identificador del articulo
+    nomArt: String, // nombre de articulo
+    descripcion: String,
+    images:[String],
+    precio: Number, 
+    ctg: String, // Categoria
+},{versionKey:false})
 
     usuarioSchema = new Schema({
         nom: String, // Nombre del usuario
