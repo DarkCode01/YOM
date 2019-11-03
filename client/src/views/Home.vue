@@ -1,6 +1,5 @@
 <template>
-  <div class="home">
-    <h1>Hello from Home</h1>
+  <div class="home float-left">
     <CardProduct />
   </div>
 </template>
