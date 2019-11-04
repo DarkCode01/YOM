@@ -8,8 +8,15 @@ import * as axios from 'axios';
 async function getProducts() {
     const response = await axios.get('http://localhost:1234')
     
-    return response.data;
+    return [...response.data];
   }
+
+// async function getProduct(id){
+//   const response = await axios.get(`http://localhost:1234/product/${id}`)
+
+//   return { ...response.data };
+// }
+/************************************************************* */
 
 Vue.use(Vuex)
 
@@ -30,10 +37,10 @@ const mutations = {
 };
 
 const actions = {
+
   async getProductsAction({ commit }){
-    console.log("Lol")
+
     const products = await getProducts();
-    console.log(products);
     commit('getProducts', products);
 
   }
