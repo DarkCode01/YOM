@@ -1,7 +1,7 @@
 <template>
   <div class="d-lg-flex d-inline">
     <v-card class="mx-auto my-3" max-width="300" @click="tapped()" v-for="product in products" :key="product._id">
-      <v-img height="150px" src="../assets/logo.png"></v-img>
+      <img height="150px" :src="'http://localhost:1234/'+product.images[0]"></v-img>
 
       <v-card-title class="text-uppercase">{{product.nomArt}}</v-card-title>
 
