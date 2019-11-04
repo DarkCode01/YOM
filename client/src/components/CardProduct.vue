@@ -1,8 +1,8 @@
 <template>
-  <div class="d-lg-flex d-inline">
-    <v-card class="mx-auto my-3" max-width="300" v-for="product in products" :key="product._id">
-      <router-link tag="button" :to="{name: 'product', params: {id: product._id} }">
-        <v-img width="150px" height="150px" :src="'http://localhost:1234/' + product.images[0]"></v-img>
+  <div class="d-md-flex d-inline">
+    <v-card class="mx-auto my-3" max-width="250" v-for="product in products" :key="product._id">
+      <router-link tag="button" :to="{name: 'product', params: {id: product._id, o: product} }">
+        <v-img max-width="250px" :src="'http://localhost:1234/' + product.images[0]"></v-img>
 
         <v-card-title class="text-uppercase">{{product.nomArt}}</v-card-title>
 
