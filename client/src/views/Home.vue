@@ -1,6 +1,6 @@
 <template>
-  <div class="home float-left">
-    <CardProduct @click="tapped()"/>
+  <div class="pb-0">
+    <CardProduct />
   </div>
 </template>
 
