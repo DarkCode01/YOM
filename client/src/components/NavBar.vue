@@ -1,20 +1,9 @@
 <template>
-    <nav>
-        <v-app-bar
-      app
-      clipped-left
-      dark
-      color="blue darken-4"
-    >
+  <nav>
+    <v-app-bar app clipped-left dark color="blue darken-4">
       <v-app-bar-nav-icon class="hidden-lg-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
-      <v-text-field
-        solo-inverted
-        text
-        hide-details
-        label="Search"
-        prepend-inner-icon="search"
-      ></v-text-field>
+      <v-text-field solo-inverted text hide-details label="Search" prepend-inner-icon="search"></v-text-field>
       <v-spacer></v-spacer>
       <div>
         <router-link to="/">
@@ -25,57 +14,49 @@
       </div>
       <div class="my-2 hidden-md-and-down">
         <router-link to="/">
-          <v-btn small text>Sign in</v-btn>
+          <v-btn color="success">
+            <v-icon class="float-left px-2">add</v-icon>New product
+          </v-btn>
         </router-link>
-        <router-link to="/login">
-          <v-btn small text>Log in</v-btn>
+        <router-link to="/">
+          <v-btn small text>Logaut</v-btn>
         </router-link>
       </div>
     </v-app-bar>
 
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      clipped
-      dark
-      color="blue darken-4"
-    >
-      <v-list
-        dense
-        class="blue darken-4"
-      >
-      <v-list-item>
-            <div class="headline font-weight-black text-center hidden-md-and-up">
-                <h1>You own Market</h1>
-            </div>
+    <v-navigation-drawer v-model="drawer" app clipped dark color="blue darken-4">
+      <v-list dense class="blue darken-4">
+        <v-list-item>
+          <div class="headline font-weight-black text-center hidden-md-and-up">
+            <h1>You own Market</h1>
+          </div>
         </v-list-item>
         <v-list-item>
-            <v-list-item-title>
-                <router-link to="/">
-                    <v-btn large text x-large>
-                        <span>Home</span>
-                        <v-icon class="float-right">mdi-home-circle</v-icon></v-btn>
-                </router-link>
-            </v-list-item-title>
+          <v-list-item-title>
+            <router-link to="/">
+              <v-btn large text x-large>
+                <span>Home</span>
+                <v-icon class="float-right">mdi-home-circle</v-icon>
+              </v-btn>
+            </router-link>
+          </v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    </nav>
+  </nav>
 </template>
 
-<script> 
-
-    export default {
-    name: "navbar",
-    props: {
-      source: String,
-    },
-    data: () => ({
-      drawer: true
-    }),
-  }
+<script>
+export default {
+  name: "navbar",
+  props: {
+    source: String
+  },
+  data: () => ({
+    drawer: true
+  })
+};
 </script>
 
 <style scoped>
-
 </style>
