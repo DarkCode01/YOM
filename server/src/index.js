@@ -14,8 +14,7 @@ require('./db');
 app //Referencia al objeto express, solo instanciar a partir de aqui las demas funciones en cadena.
     .use(cors()) //middleware para evitar errores de cors en produccion
     
-    
-    .use('/storage',express.static(path.resolve('storage')))
+    .use('/storage',express.static(path.resolve('storage')))//Path to static files
 
     .use(bodyParser.urlencoded({extended:true})) //para validacion de formularios en formato app/x-www-form-urlencoded
 
