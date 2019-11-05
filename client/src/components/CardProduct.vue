@@ -2,7 +2,7 @@
   <div class="d-md-flex d-inline">
     <v-card class="mx-auto my-3" max-width="250" v-for="product in products" :key="product._id">
       <router-link tag="button" :to="{name: 'product', params: { id: product._id } }">
-        <v-img max-width="250px" :src="'http://localhost:1234/' + product.images[0]"></v-img>
+        <v-img max-width="250px" :src="product.images[0] | imgUrl"></v-img>
 
         <v-card-title class="text-uppercase">{{product.nomArt}}</v-card-title>
 
@@ -21,9 +21,11 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import { filterProductMixins } from "../mixins/filterProdut";
 
 export default {
   name: "CardProduct",
+  mixins: [filterProductMixins],
   async created() {
     await this.loadProducts();
   },
@@ -39,14 +41,6 @@ export default {
   },
   computed: {
     ...mapState(["products"])
-  },
-  filters: {
-    cutText(value) {
-      return `${value.slice(0, 50)}...`;
-    },
-    prefixMoney(value) {
-      return `RD$ ${value.toLocaleString()}`;
-    }
   }
 };
 </script>

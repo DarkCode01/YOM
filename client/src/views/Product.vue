@@ -5,7 +5,7 @@
         <v-carousel-item
           v-for="(image ,i) in pr.images"
           :key="i"
-          :src="'http://localhost:1234/' + pr.images[0 + i]"
+          :src="pr.images[0 + i] | imgUrl"
           reverse-transition="fade-transition"
           transition="fade-transition"
           aspect-ratio="1.7"
@@ -25,8 +25,10 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
+import { filterProductMixins } from "../mixins/filterProdut";
 
 export default {
+  mixins: [filterProductMixins],
   props: {
     id: {
       type: String,
@@ -45,14 +47,6 @@ export default {
   },
   computed: {
     ...mapState(["product"])
-  },
-  filters: {
-    cutText(value) {
-      return `${value.slice(0, 50)}...`;
-    },
-    prefixMoney(value) {
-      return `RD$ ${value.toLocaleString()}`;
-    }
   }
 };
 </script>
