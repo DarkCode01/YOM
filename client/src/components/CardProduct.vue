@@ -1,24 +1,19 @@
 <template>
   <div class="d-md-flex d-inline">
     <v-card class="mx-auto my-3" max-width="250" v-for="product in products" :key="product._id">
-      <router-link tag="button" :to="{name: 'product', params: {id: product._id, o: product} }">
+      <router-link tag="button" :to="{name: 'product', params: { id: product._id } }">
         <v-img max-width="250px" :src="'http://localhost:1234/' + product.images[0]"></v-img>
 
         <v-card-title class="text-uppercase">{{product.nomArt}}</v-card-title>
 
         <v-card-subtitle class="pb-0">
-          <v-chip
-            class="ma-2"
-            x-small
-            color="primary"
-          >{{product.ctg}}</v-chip>
+          <v-chip class="ma-2" x-small color="primary">{{product.ctg}}</v-chip>
         </v-card-subtitle>
 
         <v-card-text class="text--primary">
           <div>{{product.descripcion | cutText}}</div>
           <p class="pt-3 product-price font-weight-bold">{{product.precio | prefixMoney}}</p>
         </v-card-text>
-
       </router-link>
     </v-card>
   </div>
@@ -29,22 +24,21 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "CardProduct",
-  async created () {
+  async created() {
     await this.loadProducts();
   },
   methods: {
-    ...mapActions(['getProductsAction']),
+    ...mapActions(["getProductsAction"]),
     tapped() {
-      console.log("Hola")
+      console.log("Hola");
     },
     async loadProducts() {
-      console.log('wait');
-      await this.getProductsAction()
+      console.log("wait");
+      await this.getProductsAction();
     }
   },
   computed: {
-    ...mapState(['products'])
- 
+    ...mapState(["products"])
   },
   filters: {
     cutText(value) {
