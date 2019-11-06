@@ -1,38 +1,45 @@
-const express = require('express'),
-    morgan = require('morgan'),
-    cors = require('cors'),
-    router = require('./routes/routes'),
-    bodyParser= require('body-parser'),
-    port = process.env.PORT || 1234,
-    shell=require('shelljs'),
-    app = express(),
-     path = require('path');
-global.Root = path.resolve(__dirname);
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const logger = require('morgan');
+const createError = require('http-errors');
+const env = require('dotenv').config();
+const routes = require('./routes');
 
-require('./db');
+// App
+const app = express();
 
-app //Referencia al objeto express, solo instanciar a partir de aqui las demas funciones en cadena.
-    .use(cors()) //middleware para evitar errores de cors en produccion
-    
-    .use('/storage',express.static(path.resolve('storage')))//Path to static files
+// settings...
+app.use(cors());
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-    .use(bodyParser.urlencoded({extended:true})) //para validacion de formularios en formato app/x-www-form-urlencoded
 
-    .use(bodyParser.json()) //para validacion de formularios en formato app/JSON
-    
-    .use(morgan('dev')) //middleware para seguir el rastro de las peticiones HTTP por consola
+// routes
+app.use(`/api/v${process.env.VERSION_API_REST}`, routes.account);
+app.use(`/api/v${process.env.VERSION_API_REST}`, routes.product);
 
-    .use('/', router) //Creacion de las rutas externas
-
-    .listen(port, (err) => {
-        if (err) {
-            throw err
-        }
-        
-        console.log('Running on port:', port);
+// Catch of errors
+app.use((req, res, next) => {
+    next(createError(404));
+});
+app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.json({
+        statusCode: err.status,
+        message: err.message,
+        error: err
     });
+});
 
-let dir = './storage/images';
-shell.mkdir('-p', dir);
-//creando la ruta y el directorio para almacenar las imagenes
 
+app.listen(process.env.PORT || 8000, async () => {
+    await mongoose.connect(process.env.MONGODB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    });
+    
+    console.log(`Server running on http://localhost:${process.env.PORT || 8000}`);
+});
