@@ -28,7 +28,10 @@ exports.getProducts = async (req, res, next) => {
         const products = await Product.find({});
 
         res.status(200);
-        res.json({ data: products });
+        res.json({
+            count: products.length,
+            results: products
+        });
     } catch(err) {
         next(createError(500));
     }

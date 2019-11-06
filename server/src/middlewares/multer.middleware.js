@@ -7,7 +7,7 @@ const MIME_TYPES = [
 ];
 
 exports.upload = multer({
-    dest: './tmp',
+    dest: './.tmp',
     limits: 1000000,
     fileFilter: (req, file, next) => {
         if (MIME_TYPES.includes(file.mimetype)) {
@@ -19,8 +19,12 @@ exports.upload = multer({
 });
 
 exports.limitFiles = (req, res, next) => {
-    if (req.files.length < 1) return next(createError(400, 'The min of images is (1).'));
-    if (req.files.length > 5) return next(createError(400, 'The max of images is (5).'));
-
-    return next();
+    try {
+        if (req.files.length < 1) return next(createError(400, 'The min of images is (1).'));
+        if (req.files.length > 5) return next(createError(400, 'The max of images is (5).'));
+    
+        return next();
+    } catch (err) {
+        return next(createError(400, 'The min of images is (1).'));
+    }
 }

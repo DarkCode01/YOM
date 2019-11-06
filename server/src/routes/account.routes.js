@@ -1,13 +1,11 @@
 const { Router } = require('express');
-const { product } = require('../models');
+const controllers = require('../controllers/account.controllers');
 
 const router = Router();
 
-router.get('/accounts', (req, res) => {
-    res
-        .json({
-            e: 'ssss'
-        });
-})
+
+router.get('/accounts', controllers.getAccounts);
+router.post('/accounts', controllers.createAccount);
+
 
 module.exports = router;
