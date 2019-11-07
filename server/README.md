@@ -21,15 +21,12 @@ En el archivo `.env.example` estan definidas las variables de entorno que se uti
 Pasos para correr el proyecto de la API REST.
 
 ```shell
-# entrar al proyecto
-> cd YOM/server
-
 # instalar las dependencias
 > npm install
 
 # crear el archivo `.env` para las variables de entorno
 # ojo, para saber que variables crear leer el archivo `.env.example`
-> touch .env
+> cat .env.example > .env
 
 # correr el proyecto && listo.
 > npm run dev
