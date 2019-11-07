@@ -2,4 +2,4 @@ client/node_modules/
 server/node_modules/
 server/storage/
 .env
-server/tmp/
+server/.tmp/
