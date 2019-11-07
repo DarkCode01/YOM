@@ -50,17 +50,17 @@ exports.createProduct = async (req, res, next) => {
 
         // Create product...
         const product = new Product({
+            saler: req.user._id,
             nomArt: req.body.nomArt,
             descripcion: req.body.description,
             images: uploades,
             precio: Number(req.body.precio), 
-            ctg: req.body.ctg,
+            ctg: req.body.ctg
         });
-        product.save();
 
         res.status(201);;
         res.json({
-            data: product
+            data: await product.save()
         });
     } catch(err) {
         return next(createError(500));

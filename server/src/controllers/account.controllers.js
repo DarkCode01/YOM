@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { Account } = require('../models');
 const createError = require('http-errors');
+const passport = require('passport');
 
 const router = Router();
 
@@ -12,7 +13,9 @@ const router = Router();
 
 exports.getAccounts = async (req, res, next) => {
     try {
-        const accounts = await Account.find({});
+        const accounts = await Account
+                                    .find({})
+                                    .select('-password -email_confirmed -__v');
 
         res.status(200);
         res.json({
@@ -27,19 +30,12 @@ exports.getAccounts = async (req, res, next) => {
 exports.createAccount = async (req, res, next) => {
     try {
         const account = new Account({ ...req.body });
-        const isInvalid = account.validateSync();
-        
-        if (!isInvalid) {
-            account.save();
 
-            res.status(201);
-            res.json({
-                data: account
-            });
-        }
-
-        return next(createError(400, isInvalid.message));
+        res.status(201);
+        res.json({
+            data: await account.save()
+        });
     } catch(err) {
-        return next(createError(500), err.message);
+        return next(createError(400, err.message));
     }
 }
